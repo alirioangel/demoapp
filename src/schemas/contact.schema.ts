@@ -7,9 +7,9 @@ export class Contact extends Document {
   name: string;
 
   @Prop({required: true})
-  email: string;
+  direction: string;
 
-  @Prop({required: true})
+  @Prop({required: true,unique:true})
   phone: string;
 }
 

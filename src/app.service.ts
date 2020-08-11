@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Contact } from './schemas/contact.schema';
 import { Model } from 'mongoose';
@@ -13,8 +13,13 @@ export class AppService {
     return this.contactModel.find().exec();
   }
 
-  createContact(payload: CreateContactDTO): Promise<Contact>{
-    const createContact = new this.contactModel(payload);
-    return createContact.save();
+  async createContact(payload: CreateContactDTO): Promise<Contact>{
+    try {
+      const createContact = new this.contactModel(payload);
+      return await createContact.save();
+    }catch (e){
+      throw new BadRequestException(e,"El telefono ya existe en la base de datos");
+    }
+
   }
 }
