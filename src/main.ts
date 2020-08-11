@@ -9,11 +9,11 @@ async function bootstrap() {
     .setTitle('Demo App AirTek')
     .setDescription('The AirTek API description')
     .setVersion('1.0')
-    .addTag('documentation')
+    .addTag('AirTek API')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
