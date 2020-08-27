@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { DirectionDTO } from '../contact.dto';
 
 @Schema()
 export class Contact extends Document {
@@ -7,7 +8,7 @@ export class Contact extends Document {
   name: string;
 
   @Prop({required: true})
-  direction: string;
+  direction: DirectionDTO
 
   @Prop({required: true,unique:true})
   phone: string;

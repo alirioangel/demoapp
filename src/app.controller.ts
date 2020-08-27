@@ -4,7 +4,7 @@ import { Contact } from './schemas/contact.schema';
 import { ContactsDTO, CreateContactDTO } from './contact.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('')
+@ApiTags('Contacts')
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
